@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -16,15 +18,20 @@ import java.util.Map.Entry;
 
 public class PostFile {
 
-	public static void main(String[] args) {
+	private static final String UPLOAD_FILE = "http://localhost:9080/stonecloud/test";
+	
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-
+		Map<String, InputStream> files = new HashMap<>();
+		FileInputStream fi = new FileInputStream("d:\\test.txt");
+		files.put("test", fi);
+		PostFile.uploadToFarService(files);
 	}
 	
-	public void uploadToFarService(HashMap<String, InputStream> files){
+	public static void uploadToFarService(Map<String, InputStream> files){
 		try {  
-            String BOUNDARY = "---------7d4a6d158c9"; // 定义数据分隔线  
-            URL url = new URL("");  
+            String BOUNDARY = "boundary-7d4a6d158c9"; // 定义数据分隔线  
+            URL url = new URL(UPLOAD_FILE);  
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();  
             // 发送POST请求必须设置如下两行  
             conn.setDoOutput(true);  
