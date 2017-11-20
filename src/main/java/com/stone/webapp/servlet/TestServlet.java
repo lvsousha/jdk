@@ -38,6 +38,7 @@ public class TestServlet extends HttpServlet{
 		  log.info("doPost");
 		  log.info(request.getContentType());
 		  Map<String,String[]> parameters = request.getParameterMap();
+	      log.info("=========参数=========");
 	      for(String key : parameters.keySet()){
 	    	  log.info("--KEY--");
 	    	  log.info(key);
@@ -47,12 +48,14 @@ public class TestServlet extends HttpServlet{
 	    		  log.info(values[index]);
 	    	  }
 	      }
-	      log.info("==================");
+	      log.info("=========输入流=========");
 	      InputStream is = request.getInputStream();
 	      byte[] bytes = new byte[request.getContentLength()];
 	      while(is.read(bytes) != -1){
 	    	  log.info(new String(bytes));
 	      }
+	      
+	      response.getWriter().println("return");
 	  }
 	  
 	  public void destroy(){

@@ -3,9 +3,7 @@ package com.stone.net;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -42,6 +40,8 @@ public class PostFile {
             conn.setRequestProperty("user-agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");  
             conn.setRequestProperty("Charsert", "UTF-8");  
             conn.setRequestProperty("Content-Type","multipart/form-data; boundary=" + BOUNDARY);  
+//            conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");    
+//            conn.setRequestProperty("Content-Type","application/json");  
   
             OutputStream out = new DataOutputStream(conn.getOutputStream());  
             byte[] end_data = ("\r\n--" + BOUNDARY + "--\r\n").getBytes();// 定义最后数据分隔线  
@@ -52,12 +52,8 @@ public class PostFile {
                 Entry<String, InputStream> entry = iter.next();  
                 String key = (String) entry.getKey();  
                 InputStream val = (InputStream) entry.getValue();  
-                String fname = key;  
-                File file = new File(fname);  
                 StringBuilder sb = new StringBuilder();  
-                sb.append("--");  
-                sb.append(BOUNDARY);  
-                sb.append("\r\n");  
+                sb.append("--"+BOUNDARY+"\r\n");  
                 sb.append("Content-Disposition: form-data;name=\"file" + i  
                         + "\";filename=\"" + key + "\"\r\n");  
                 sb.append("Content-Type:application/octet-stream\r\n\r\n");  
