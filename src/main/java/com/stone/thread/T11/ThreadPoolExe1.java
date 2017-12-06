@@ -24,31 +24,16 @@ public class ThreadPoolExe1 extends ThreadPoolExecutor{
 			try {
 				Thread.sleep(5000);
 				this.allowCoreThreadTimeOut(false);
-				execute(new Runnable() {
-				@Override
-				public void run() {
-					log.info(Thread.currentThread().getName()+" IN");
-					try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					log.info(Thread.currentThread().getName()+" OUT");
-				}
-			});
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error("",e);
 			}
 		}
 	}
 	
 	protected void beforeExecute(Thread t, Runnable r){
-//		if(this.getQueue().size() == 0 && this.getActiveCount() > 1){
-//			log.info("beforeExecute");
+		if(!this.allowsCoreThreadTimeOut()){
 			this.allowCoreThreadTimeOut(true);
-//		}
+		}
 	}
 
 	
