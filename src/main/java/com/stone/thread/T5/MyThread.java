@@ -2,7 +2,7 @@ package com.stone.thread.T5;
 
 public class MyThread extends Thread {
 
-	private static String name = "";
+	private String name = "";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
