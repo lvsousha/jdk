@@ -1,4 +1,4 @@
-package com.stone.proxy.self;
+package com.stone.proxy.jdk;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

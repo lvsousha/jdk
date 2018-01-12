@@ -1,4 +1,4 @@
-package com.stone.proxy.self;
+package com.stone.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

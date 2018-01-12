@@ -1,4 +1,4 @@
-package com.stone.proxy.self;
+package com.stone.proxy.jdk;
 
 import org.apache.log4j.Logger;
 

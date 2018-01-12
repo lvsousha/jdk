@@ -1,4 +1,4 @@
-package com.stone.proxy.self;
+package com.stone.proxy.jdk;
 
 public class DynamicProxyTest {
 	
