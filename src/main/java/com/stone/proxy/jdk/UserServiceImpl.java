@@ -11,4 +11,10 @@ public class UserServiceImpl implements UserService{
 		log.info("add");
 	}
 
+	@Override
+	public void delete() {
+		log.info("delete");
+		
+	}
+
 }
