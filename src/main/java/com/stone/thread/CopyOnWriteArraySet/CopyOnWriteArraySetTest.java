@@ -1,4 +1,4 @@
-package com.stone.thread.T13;
+package com.stone.thread.CopyOnWriteArraySet;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -17,7 +17,7 @@ public class CopyOnWriteArraySetTest {// TODO: set是HashSet对象时，程序�
 
 	private static void printAll() {
 		String value = null;
-		Iterator iter = set.iterator();
+		Iterator<String> iter = set.iterator();
 		while (iter.hasNext()) {
 			value = (String) iter.next();
 			System.out.print(value + ", ");

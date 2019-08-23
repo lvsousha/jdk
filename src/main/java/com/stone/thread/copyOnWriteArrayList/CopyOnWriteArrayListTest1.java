@@ -1,4 +1,4 @@
-package com.stone.thread.T12;
+package com.stone.thread.copyOnWriteArrayList;
 
 import java.util.Iterator;
 import java.util.List;
@@ -12,8 +12,8 @@ public class CopyOnWriteArrayListTest1 {// TODO: list是ArrayList对象时，程
 		final List<String> list = new CopyOnWriteArrayList<String>();
 		list.add("insert");
 		// 同时启动两个线程对list进行操作！
-//		new MyThread("ta").start();
-//		new MyThread("tb").start();
+		new MyThread("ta").start();
+		new MyThread("tb").start();
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -45,7 +45,7 @@ public class CopyOnWriteArrayListTest1 {// TODO: list是ArrayList对象时，程
 
 	private static void printAll() {
 		String value = null;
-		Iterator iter = list.iterator();
+		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
 			value = (String) iter.next();
 			System.out.print(value + ", ");
