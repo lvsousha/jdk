@@ -1,5 +1,7 @@
 package com.stone.proxy.jdk;
 
+import java.lang.reflect.Proxy;
+
 public class DynamicProxyTest {
 	
 	public static void main(String[] args) {
@@ -7,8 +9,14 @@ public class DynamicProxyTest {
 		UserService userService = new UserServiceImpl();
 		MyInvocationHandler invocationHandler = new MyInvocationHandler(userService);
 
-		UserService proxy = (UserService) invocationHandler.getProxy();
-		proxy.add();
-		proxy.delete();
+		Object proxy = Proxy.newProxyInstance(
+            Thread.currentThread().getContextClassLoader(), 
+            userService.getClass().getInterfaces(),
+            invocationHandler
+            );
+		
+		UserService userServiceProxy = (UserService) proxy;
+		userServiceProxy.add();
+		userServiceProxy.delete();
 	}
 }
