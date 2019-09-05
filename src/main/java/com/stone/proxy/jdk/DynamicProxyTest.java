@@ -17,6 +17,6 @@ public class DynamicProxyTest {
 		
 		UserService userServiceProxy = (UserService) proxy;
 		userServiceProxy.add();
-		userServiceProxy.delete();
+//		userServiceProxy.delete();
 	}
 }
