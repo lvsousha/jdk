@@ -12,6 +12,7 @@ public class MyMethodInterceptor implements MethodInterceptor {
   public Object intercept(Object sub, Method method, Object[] objects, MethodProxy methodProxy)
       throws Throwable {
     System.out.println("======插入前置通知======");
+    System.out.println(methodProxy.getSuperIndex());
     Object object = methodProxy.invokeSuper(sub, objects);
 //    Object object = methodProxy.invoke(sub, objects);
     System.out.println("======插入后者通知======");

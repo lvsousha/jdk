@@ -17,6 +17,7 @@ public class ClientMain {
     enhancer.setCallback(new MyMethodInterceptor());
     // 创建代理对象
     HelloService proxy = (HelloService) enhancer.create();
+    System.out.println(proxy.getClass());
     // 通过代理对象调用目标方法
     proxy.sayHello();
 
